@@ -38,7 +38,6 @@ public class ExchangeRateServiceImp implements ExchangeRateService {
 			exchangeRate.setExchangeRate(cachedRate);
 			exchangeRate.setSource(source.getCode());
 			exchangeRate.setTarget(target.getCode());
-			System.out.println("Returning data for " + rateKey + " from Cache");
 			exchangeRate.setFromCache(true);
 			return exchangeRate;
 		}

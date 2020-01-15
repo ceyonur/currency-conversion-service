@@ -19,4 +19,10 @@ public enum ErrorCodes {
     public String getType() {
         return type;
     }
+    
+    @Override
+    public String toString() {
+    	// TODO Auto-generated method stub
+    	return code + "-" + type; 
+    }
 }

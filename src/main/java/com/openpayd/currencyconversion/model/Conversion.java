@@ -11,6 +11,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class Conversion {
 	@Id
@@ -20,6 +22,7 @@ public class Conversion {
 	private String sourceCurrency;
 	private String targetCurrency;
 	@Temporal(TemporalType.TIMESTAMP)
+	@JsonFormat(shape = JsonFormat.Shape.NUMBER)
 	private Date transactionDate;
 	private BigDecimal sourceAmount;
 	@Transient

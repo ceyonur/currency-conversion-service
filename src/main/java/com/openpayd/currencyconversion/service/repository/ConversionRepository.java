@@ -8,8 +8,6 @@ import com.openpayd.currencyconversion.model.Conversion;
 
 public interface ConversionRepository extends CrudRepository<Conversion, Long> {
 
-	Conversion findById(long id);
-
 	List<Conversion> findByTransactionDate(Date transactionDate);
 
 	List<Conversion> findByTransactionDateBetween(
