@@ -38,7 +38,7 @@ public class ExchangeRateServiceImp implements ExchangeRateService {
 		if(null != cachedRate) {
 			exchangeRate.setExchangeRate(cachedRate);
 			exchangeRate.setSource(source.getCode());
-			exchangeRate.setTargettarget.getCode());
+			exchangeRate.setTarget(target.getCode());
 			System.out.println("Returning data for " + rateKey + " from Cache");
 			exchangeRate.setFromCache(true);
 			return exchangeRate;
@@ -60,7 +60,7 @@ public class ExchangeRateServiceImp implements ExchangeRateService {
 			BigDecimal bdr = new BigDecimal(cRate);
 			exchangeRate.setExchangeRate(bdr);
 			exchangeRate.setSource(source.getCode());
-			exchangeRate.setTargettarget.getCode());
+			exchangeRate.setTarget(target.getCode());
 			cache.cacheRate(rateKey, bdr);
 		} else {
 			exchangeRate.setError(rates.getError());
