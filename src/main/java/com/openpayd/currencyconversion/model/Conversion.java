@@ -1,20 +1,15 @@
 package com.openpayd.currencyconversion.model;
 
 import java.math.BigDecimal;
-import java.util.Currency;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
-
-import com.openpayd.currencyconversion.util.ServiceCurrency;
 
 @Entity
 public class Conversion {

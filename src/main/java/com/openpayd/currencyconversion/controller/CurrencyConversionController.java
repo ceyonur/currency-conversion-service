@@ -1,17 +1,14 @@
 package com.openpayd.currencyconversion.controller;
 
 import java.math.BigDecimal;
-import java.util.Currency;
 import java.util.Date;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,7 +20,6 @@ import com.openpayd.currencyconversion.model.response.ConversionResponse;
 import com.openpayd.currencyconversion.model.response.ExchangeRateResponse;
 import com.openpayd.currencyconversion.service.ExchangeRateService;
 import com.openpayd.currencyconversion.service.repository.ConversionRepository;
-import com.openpayd.currencyconversion.util.Constants;
 import com.openpayd.currencyconversion.util.ErrorCodes;
 import com.openpayd.currencyconversion.util.ServiceCurrency;
 

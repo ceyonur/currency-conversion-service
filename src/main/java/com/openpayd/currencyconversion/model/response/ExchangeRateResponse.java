@@ -1,7 +1,6 @@
 package com.openpayd.currencyconversion.model.response;
 
 import java.math.BigDecimal;
-import java.util.Currency;
 
 public class ExchangeRateResponse {
 
