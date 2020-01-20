@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ConversionError {
+public class Error {
 	
 	private String code;
 	private String type;
@@ -15,7 +15,7 @@ public class ConversionError {
 	 * @param type
 	 * @param info
 	 */
-	public ConversionError(String code, String type, String info) {
+	public Error(String code, String type, String info) {
 		super();
 		this.code = code;
 		this.type = type;

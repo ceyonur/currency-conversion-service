@@ -45,7 +45,7 @@ public class Conversion {
 	/**
 	 * 
 	 */
-	protected Conversion() {}
+	public Conversion() {}
 	/**
 	 * @return the id
 	 */

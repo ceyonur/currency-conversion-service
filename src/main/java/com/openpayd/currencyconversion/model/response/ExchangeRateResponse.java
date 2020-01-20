@@ -2,10 +2,9 @@ package com.openpayd.currencyconversion.model.response;
 
 import java.math.BigDecimal;
 
-public class ExchangeRateResponse {
+public class ExchangeRateResponse extends Response{
 
 	private BigDecimal exchangeRate;
-	private ConversionError error;
 	private String source;
 	private String target;
 	private boolean fromCache = false;
@@ -14,17 +13,15 @@ public class ExchangeRateResponse {
 	 * @param exchangeRate
 	 * @param error
 	 */
-	public ExchangeRateResponse(BigDecimal exchangeRate, ConversionError error, boolean fromCache, String source, String target) {
+	public ExchangeRateResponse(BigDecimal exchangeRate, boolean fromCache, String source, String target) {
 		super();
 		this.exchangeRate = exchangeRate;
-		this.error = error;
 		this.fromCache = fromCache;
 		this.source = source;
 		this.target = target;
 	}
 
 	public ExchangeRateResponse() {
-		// TODO Auto-generated constructor stub
 		super();
 	}
 
@@ -39,18 +36,6 @@ public class ExchangeRateResponse {
 	 */
 	public void setExchangeRate(BigDecimal convertedValue) {
 		this.exchangeRate = convertedValue;
-	}
-	/**
-	 * @return the error
-	 */
-	public ConversionError getError() {
-		return error;
-	}
-	/**
-	 * @param error the error to set
-	 */
-	public void setError(ConversionError error) {
-		this.error = error;
 	}
 
 	/**

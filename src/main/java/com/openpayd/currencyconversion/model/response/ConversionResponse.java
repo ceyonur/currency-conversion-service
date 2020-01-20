@@ -2,9 +2,8 @@ package com.openpayd.currencyconversion.model.response;
 
 import com.openpayd.currencyconversion.model.Conversion;
 
-public class ConversionResponse {
+public class ConversionResponse extends Response{
 	private Conversion conversion;
-	private ConversionError error;
 	/**
 	 * @return the conversion
 	 */
@@ -16,17 +15,5 @@ public class ConversionResponse {
 	 */
 	public void setConversion(Conversion conversion) {
 		this.conversion = conversion;
-	}
-	/**
-	 * @return the error
-	 */
-	public ConversionError getError() {
-		return error;
-	}
-	/**
-	 * @param error the error to set
-	 */
-	public void setError(ConversionError error) {
-		this.error = error;
 	}
 }

@@ -3,7 +3,7 @@ package com.openpayd.currencyconversion.model;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.openpayd.currencyconversion.model.response.ConversionError;
+import com.openpayd.currencyconversion.model.response.Error;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ServiceExchangeRates {
@@ -16,7 +16,7 @@ public class ServiceExchangeRates {
     private String source;
     private Long timestamp;
     
-    private ConversionError error;
+    private Error error;
     private Map<String, String> quotes;
     
 	/**
@@ -106,13 +106,13 @@ public class ServiceExchangeRates {
 	/**
 	 * @return the error
 	 */
-	public ConversionError getError() {
+	public Error getError() {
 		return error;
 	}
 	/**
 	 * @param error the error to set
 	 */
-	public void setError(ConversionError error) {
+	public void setError(Error error) {
 		this.error = error;
 	}
 	/**

@@ -1,66 +1,33 @@
 package com.openpayd.currencyconversion.controller;
 
-import java.math.BigDecimal;
-import java.util.Date;
-import java.util.List;
-
-import javax.websocket.server.PathParam;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.MissingServletRequestParameterException;
-import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.openpayd.currencyconversion.model.Conversion;
-import com.openpayd.currencyconversion.model.response.ConversionError;
-import com.openpayd.currencyconversion.model.response.ConversionResponse;
 import com.openpayd.currencyconversion.model.response.ExchangeRateResponse;
 import com.openpayd.currencyconversion.service.ExchangeRateService;
-import com.openpayd.currencyconversion.service.repository.ConversionRepository;
-import com.openpayd.currencyconversion.util.ErrorCodes;
 import com.openpayd.currencyconversion.util.ServiceCurrency;
+import com.openpayd.currencyconversion.validator.ValidCurrency;
 
 @RestController
+@Validated
 @RequestMapping("/api/exchangeRate")
 public class ExchangeRateController {
-
-	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	private ExchangeRateService proxy;
 
 	@GetMapping(value="", produces = "application/json")
 	@ResponseBody
-	public ExchangeRateResponse getExchangeRate(@RequestParam String source, @RequestParam String target) {
+	public ExchangeRateResponse getExchangeRate(@RequestParam @ValidCurrency String source, @RequestParam @ValidCurrency String target) {
 		ExchangeRateResponse response;
-		try {
-			ServiceCurrency cSource = ServiceCurrency.fromCode(source);
-			ServiceCurrency cTarget = ServiceCurrency.fromCode(target);
-			response = proxy.getExchangeRate(cSource, cTarget);
-		}
-		catch (IllegalArgumentException e) {
-			response = new ExchangeRateResponse();
-			ConversionError ce = new ConversionError(ErrorCodes.ILLEGAL_ARGUMENT_CODE.getCode(), ErrorCodes.ILLEGAL_ARGUMENT_CODE.getType(), e.getMessage());
-			response.setError(ce);
-			logger.error(ErrorCodes.ILLEGAL_ARGUMENT_CODE.toString(), e);
-		}
-
-		catch (Exception e) {
-			response = new ExchangeRateResponse();
-			ConversionError ce = new ConversionError(ErrorCodes.INTERNAL_ERROR_CODE.getCode(), ErrorCodes.INTERNAL_ERROR_CODE.getType(), e.getMessage());
-			response.setError(ce);
-			logger.error(ErrorCodes.INTERNAL_ERROR_CODE.toString(), e);
-		}
-
-
+		ServiceCurrency cSource = ServiceCurrency.fromCode(source);
+		ServiceCurrency cTarget = ServiceCurrency.fromCode(target);
+		response = proxy.getExchangeRate(cSource, cTarget);
 		return response;
 	}
 }
